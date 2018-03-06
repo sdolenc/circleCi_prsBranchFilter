@@ -4,10 +4,10 @@
 #
 version: 2
 jobs:
-  sleep1:
-    working_directory: ~/repo
+  build:
     docker:
       - image: circleci/python
+    working_directory: ~/repo
     steps:
       - checkout
       - run:
@@ -19,7 +19,7 @@ workflows:
   version: 2
   all:
     jobs:
-      - sleep1:
+      - build:
           filters:
             branches:
               only:
