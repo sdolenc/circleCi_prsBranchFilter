@@ -6,6 +6,8 @@ version: 2
 jobs:
   sleep1:
     working_directory: ~/repo
+    docker:
+      - image: circleci/python
     steps:
       - checkout
       - run:
