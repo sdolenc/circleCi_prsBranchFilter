@@ -16,15 +16,17 @@ jobs:
           name: long test
           command: sleep 123
 
-#todo: transition to working solution and comment out this block
-workflows:
-  version: 2
-  all:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - test
-                - master
-                - dev
+# traditional way of doing this is with workflows, but that
+# doesn't work for PRs into the filtered branches.
+
+#workflows:
+#  version: 2
+#  all:
+#    jobs:
+#      - build:
+#          filters:
+#            branches:
+#              only:
+#                - test
+#                - master
+#                - dev
