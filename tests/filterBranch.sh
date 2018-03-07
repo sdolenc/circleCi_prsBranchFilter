@@ -46,11 +46,11 @@ branch_in_list()
 
     for filter in $ONLY_BRANCHES; do
         if [[ $branch == $filter ]] ; then
-            true
+            return 0
         fi
     done
 
-    false
+    return 1
 }
 
 sudo apt update
