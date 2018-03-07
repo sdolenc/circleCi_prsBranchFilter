@@ -53,15 +53,15 @@ sudo apt update
 sudo apt install -y jq curl
 
 current_branch=$(get_current_branch)
-if [[ is_valid_branch $current_branch ]] ; then
-    if [[ branch_in_list $current_branch ]] ; then
+if is_valid_branch $current_branch ; then
+    if branch_in_list $current_branch ; then
         exit 0
     fi
 fi
 
 base_branch=$(get_base_branch)
-if [[ is_valid_branch $base_branch ]] ; then
-    if [[ branch_in_list $base_branch ]] ; then
+if is_valid_branch $base_branch ; then
+    if branch_in_list $base_branch ; then
         exit 0
     fi
 fi
