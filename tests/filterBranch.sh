@@ -54,8 +54,8 @@ branch_in_list()
 }
 
 env
-sudo apt update
-sudo apt install -y jq curl
+sudo apt -qq update
+sudo apt -qq install -y jq curl
 
 echo "ONLY_BRANCHES=$ONLY_BRANCHES"
 
