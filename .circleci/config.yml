@@ -23,8 +23,19 @@ jobs:
           name: long test
           command: |
             if bash ./tests/filterBranch.sh ; then
-              # your tests go here
-              sleep 123
+              echo "running tests!"
+              echo
+
+              #todo: your tests go here
+              #todo: remove sleep
+              echo "Sleep for a little bit"
+              sleep 22
+
+              echo
+              echo "tests complete!"
+            else
+              echo "branch not in filter"
+              echo "skipping tests!"
             fi
 
 # workflow filter, but it doesn't work for
