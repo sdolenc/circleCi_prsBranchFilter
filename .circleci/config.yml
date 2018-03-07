@@ -34,7 +34,6 @@ jobs:
               echo
               echo "tests complete!"
             else
-              echo "branch not in filter"
               echo "skipping tests!"
             fi
 
