@@ -50,7 +50,7 @@ branch_in_list()
 }
 
 sudo apt update
-sudo apt instally -y jq curl
+sudo apt install -y jq curl
 
 current_branch=$(get_current_branch)
 if [[ is_valid_branch $current_branch ]] ; then
