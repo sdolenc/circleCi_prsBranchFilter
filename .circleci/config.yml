@@ -5,6 +5,13 @@
 version: 2
 jobs:
   build:
+    # job filter, but it doesn't work for
+    # PRs (into the filtered branches).
+    #branches:
+    #  only:
+    #    - test
+    #    - master
+    #    - dev
     environment:
       - ONLY_BRANCHES: "test master dev"
     docker:
@@ -16,8 +23,8 @@ jobs:
           name: long test
           command: sleep 123
 
-# traditional way of doing this is with workflows, but that
-# doesn't work for PRs into the filtered branches.
+# workflow filter, but it doesn't work for
+# PRs (into the filtered branches).
 
 #workflows:
 #  version: 2
