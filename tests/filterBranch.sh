@@ -20,12 +20,16 @@ get_current_branch()
 
 get_base_branch()
 {
+    local baseBranch=
+
     if [[ -n $CIRCLE_PULL_REQUEST ]] ; then
         # Construct github API url
         local g="github.com"
         local apiURL=$(echo "$CIRCLE_PULL_REQUEST" | sed "s#/$g/#/api.$g/repos/#g" | sed "s#/pull/#/pulls/#g") > /dev/null
-        local baseBranch=$(curl -sSl $apiURL | jq -r '.base.ref')
+        baseBranch=$(curl -sSl $apiURL | jq -r '.base.ref')
     fi
+
+    echo "$baseBranch"
 }
 
 is_valid_branch()
