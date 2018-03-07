@@ -46,6 +46,7 @@ branch_in_list()
 
     for filter in $ONLY_BRANCHES; do
         if [[ $branch == $filter ]] ; then
+            echo "branch in filter"
             return 0
         fi
     done
@@ -57,6 +58,7 @@ env
 sudo apt -qq update > /dev/null 2>&1 
 sudo apt -qq install -y jq curl > /dev/null 2>&1 
 
+echo
 echo "ONLY_BRANCHES=$ONLY_BRANCHES"
 
 current_branch=$(get_current_branch)
