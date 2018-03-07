@@ -59,6 +59,8 @@ if is_valid_branch $current_branch ; then
     fi
 fi
 
+env
+
 base_branch=$(get_base_branch)
 if is_valid_branch $base_branch ; then
     if branch_in_list $base_branch ; then
