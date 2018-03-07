@@ -21,7 +21,11 @@ jobs:
       - checkout
       - run:
           name: long test
-          command: sleep 123
+          command: |
+            if bash ./tests/filterBranch.sh ; then
+              # your tests go here
+              sleep 123
+            fi
 
 # workflow filter, but it doesn't work for
 # PRs (into the filtered branches).
