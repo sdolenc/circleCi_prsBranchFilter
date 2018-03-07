@@ -46,6 +46,7 @@ branch_in_list()
 
     for filter in $ONLY_BRANCHES; do
         if [[ $branch == $filter ]] ; then
+            echo
             echo "branch in filter"
             return 0
         fi
@@ -77,4 +78,6 @@ if is_valid_branch $base_branch ; then
     fi
 fi
 
+echo
+echo "branch NOT in filter"
 exit 1
