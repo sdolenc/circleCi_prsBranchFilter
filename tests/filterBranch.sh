@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Licensed under the MIT license. See LICENSE file on the project webpage for details.
 
-set -ex
+set -e
 
 get_current_branch()
 {
@@ -53,19 +53,22 @@ branch_in_list()
     return 1
 }
 
+env
 sudo apt update
 sudo apt install -y jq curl
 
+echo "ONLY_BRANCHES=$ONLY_BRANCHES"
+
 current_branch=$(get_current_branch)
+echo "current_branch=$current_branch"
 if is_valid_branch $current_branch ; then
     if branch_in_list $current_branch ; then
         exit 0
     fi
 fi
 
-env
-
 base_branch=$(get_base_branch)
+echo "base_branch=$base_branch"
 if is_valid_branch $base_branch ; then
     if branch_in_list $base_branch ; then
         exit 0
