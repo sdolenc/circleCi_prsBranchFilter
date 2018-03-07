@@ -7,6 +7,7 @@ jobs:
   build:
     # job filter, but it doesn't work for
     # PRs (into the filtered branches).
+    # We use ONLY_BRANCHES and filterBranch.sh instead
     #branches:
     #  only:
     #    - test
@@ -39,7 +40,7 @@ jobs:
 
 # workflow filter, but it doesn't work for
 # PRs (into the filtered branches).
-
+# We use ONLY_BRANCHES and filterBranch.sh instead
 #workflows:
 #  version: 2
 #  all:
