@@ -5,6 +5,15 @@
 version: 2
 jobs:
   build:
+    # job filter, but it doesn't work for
+    # PRs (into the filtered branches).
+    #branches:
+    #  only:
+    #    - test
+    #    - master
+    #    - dev
+    environment:
+      - ONLY_BRANCHES: "test master dev"
     docker:
       - image: circleci/python
     working_directory: ~/repo
@@ -12,15 +21,33 @@ jobs:
       - checkout
       - run:
           name: long test
-          command: sleep 123
+          command: |
+            if bash ./tests/filterBranch.sh ; then
+              echo "running tests!"
+              echo
 
-#todo: transition to working solution and comment out this block
-workflows:
-  version: 2
-  all:
-    jobs:
-      - build:
-          filters:
-            branches:
-              only:
-                - master
+              #todo: your tests go here
+              #todo: remove sleep
+              echo "Sleep for a little bit"
+              sleep 22
+
+              echo
+              echo "tests complete!"
+            else
+              echo "skipping tests!"
+            fi
+
+# workflow filter, but it doesn't work for
+# PRs (into the filtered branches).
+
+#workflows:
+#  version: 2
+#  all:
+#    jobs:
+#      - build:
+#          filters:
+#            branches:
+#              only:
+#                - test
+#                - master
+#                - dev
