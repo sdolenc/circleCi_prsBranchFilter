@@ -1,12 +1,7 @@
-# Python CircleCI 2.0 configuration file
-#
-# Check https://circleci.com/docs/2.0/language-python/ for more details
-#
 version: 2
 jobs:
   build:
-    # job filter, but it doesn't work for
-    # PRs (into the filtered branches).
+    # job filter, but it doesn't work for PRs into the filtered branches.
     # We use ONLY_BRANCHES and filterBranch.sh instead
     #branches:
     #  only:
@@ -14,6 +9,7 @@ jobs:
     #    - master
     #    - dev
     environment:
+      # Space delimited list of branches
       - ONLY_BRANCHES: "test master dev"
     docker:
       - image: circleci/python
@@ -28,6 +24,7 @@ jobs:
               echo
 
               #todo: your tests go here
+
               #todo: remove sleep
               echo "Sleep for a little bit"
               sleep 22
@@ -38,8 +35,7 @@ jobs:
               echo "skipping tests!"
             fi
 
-# workflow filter, but it doesn't work for
-# PRs (into the filtered branches).
+# workflow filter, but it doesn't work for PRs into the filtered branches.
 # We use ONLY_BRANCHES and filterBranch.sh instead
 #workflows:
 #  version: 2
